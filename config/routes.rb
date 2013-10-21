@@ -1,5 +1,9 @@
 Demo::Application.routes.draw do
-  devise_for :users
+  resources :starts
+
+  devise_for :admins, :users, :controllers => { :registrations => "users/registrations" }
+  root :to => redirect('/users/sign_in')
+#  devise_for :users
   resources :patients
 
   # The priority is based upon order of creation: first created -> highest priority.
