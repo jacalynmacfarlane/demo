@@ -1,0 +1,17 @@
+<h1>Patient Search</h1>
+
+<%= form_for @search do |f| %>
+  <div clas"field">
+    <%= f.label :drc_id %><br />
+    <%= f.text_field :drc_id %>
+  </div>
+  <div class="field">
+    <%= f.label :first_initial %><br />
+    <%= f.text_field :first_initial %>
+  </div>
+  <div class="field">
+    <%= f.label :last_initial %><br />
+    <%= f.text_field :last_initial %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>

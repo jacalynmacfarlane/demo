@@ -1,10 +1,19 @@
 Demo::Application.routes.draw do
-  resources :starts
+  authenticated :user do
+    root :to => 'starts#index', :as => :unauthenticated_path
+  end
 
-  devise_for :admins, :users, :controllers => { :registrations => "users/registrations" }
-  root :to => redirect('/users/sign_in')
-#  devise_for :users
-  resources :patients
+  devise_scope :user do
+    root :to => "devise/sessions#new", :as => :authenticated_path
+   # match '/user/confirmation/' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
+  end
+
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  
+  resources :patients  
+  resources :patient_searches
+  resources :homes
+  resources :starts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -14,9 +14,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	protected
 
-	def after_sign_up_path_for('homes')
-					'/homes'
+	def after_sign_up_path_for('starts')
+		after_sign_up_path_for(:starts)
 	end
+
+  def after_sign_in_path_for('starts')
+    after_sign_in_path_for(:starts)
+  end
 
   # def new
   #   super
